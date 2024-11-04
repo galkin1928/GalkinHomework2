@@ -8,14 +8,25 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var currentCity = "Red"
+    var cities = ["Porto, Portugal", "Lisboa, Portugal", "Moscow"]
+
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        NavigationView {
+            VStack {
+                Picker("What is your favorite color?", selection: $currentCity) {
+                    ForEach(cities, id: \.self) {
+                        Text($0)
+                    }
+                }
+                .pickerStyle(.segmented)
+                .onAppear {
+                    currentCity = cities.first ?? ""
+                }
+
+                WeatherScreen(city: currentCity)
+            }
         }
-        .padding()
     }
 }
 

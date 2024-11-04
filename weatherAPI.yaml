@@ -1,0 +1,149 @@
+openapi: 3.0.3
+info:
+  title: Weatherstack API
+  description: Weatherstack API provides real-time weather data for any location in the world.
+  version: "1.0.0"
+  contact:
+    name: Weatherstack
+    url: https://weatherstack.com
+
+servers:
+  - url: https://api.weatherstack.com
+    description: Primary API server
+
+paths:
+  /current:
+    get:
+      summary: Get current weather data
+      description: |
+        Provides real-time weather information for a specified location.
+      operationId: getCurrentWeather
+      parameters:
+        - name: access_key
+          in: query
+          required: true
+          schema:
+            type: string
+          description: Your API access key.
+        - name: query
+          in: query
+          required: true
+          schema:
+            type: string
+          description: Location to retrieve weather data for (e.g., city name, ZIP code, coordinates).
+        - name: units
+          in: query
+          required: false
+          schema:
+            type: string
+            enum: [m, s, f]
+          description: Unit system (m for Metric, s for Scientific, f for Fahrenheit). Defaults to Metric.
+        - name: language
+          in: query
+          required: false
+          schema:
+            type: string
+          description: Language code for output (e.g., en for English, fr for French).
+      responses:
+        '200':
+          description: Successful response with current weather data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CurrentWeatherResponse'
+        '400':
+          description: Bad Request - Invalid location or missing required parameters
+        '401':
+          description: Unauthorized - Invalid API key
+
+components:
+  securitySchemes:
+    apiKeyAuth:
+      type: apiKey
+      in: query
+      name: access_key
+  schemas:
+    CurrentWeatherResponse:
+      type: object
+      properties:
+        request:
+          $ref: '#/components/schemas/Request'
+        location:
+          $ref: '#/components/schemas/Location'
+        current:
+          $ref: '#/components/schemas/CurrentWeatherData'
+
+    Request:
+      type: object
+      properties:
+        type:
+          type: string
+        query:
+          type: string
+        language:
+          type: string
+        unit:
+          type: string
+
+    Location:
+      type: object
+      properties:
+        name:
+          type: string
+        country:
+          type: string
+        region:
+          type: string
+        lat:
+          type: string
+        lon:
+          type: string
+        timezone_id:
+          type: string
+        localtime:
+          type: string
+        localtime_epoch:
+          type: integer
+        utc_offset:
+          type: string
+
+    CurrentWeatherData:
+      type: object
+      properties:
+        observation_time:
+          type: string
+        temperature:
+          type: integer
+        weather_code:
+          type: integer
+        weather_icons:
+          type: array
+          items:
+            type: string
+        weather_descriptions:
+          type: array
+          items:
+            type: string
+        wind_speed:
+          type: integer
+        wind_degree:
+          type: integer
+        wind_dir:
+          type: string
+        pressure:
+          type: integer
+        precip:
+          type: number
+        humidity:
+          type: integer
+        cloudcover:
+          type: integer
+        feelslike:
+          type: integer
+        uv_index:
+          type: integer
+        visibility:
+          type: integer
+
+security:
+  - apiKeyAuth: []
