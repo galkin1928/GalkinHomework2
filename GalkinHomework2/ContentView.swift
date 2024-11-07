@@ -24,7 +24,10 @@ struct ContentView: View {
                     currentCity = cities.first ?? ""
                 }
 
-                WeatherScreen(city: currentCity)
+                if let network: NetworkService = try? ServiceLocator.shared.resolve(),
+                   let storage: StorageService = try? ServiceLocator.shared.resolve() {
+                    WeatherScreen(network: network, storage: storage, city: currentCity)
+                }
             }
         }
     }

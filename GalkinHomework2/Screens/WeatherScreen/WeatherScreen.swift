@@ -20,8 +20,12 @@ struct WeatherCities {
 }
 
 struct WeatherScreen: View {
-    @State var weather: CurrentWeatherData = .init()
+
+    var network: NetworkService
+    var storage: StorageService
     var city: String
+
+    @State var weather: CurrentWeatherData = .init()
     var body: some View {
         List {
             if let temperature = weather.temperature {
@@ -48,6 +52,8 @@ struct WeatherScreen: View {
         }
         .onAppear {
             loadWeather(for: city)
+            network.doSomething()
+            storage.doSomething()
         }
         .onChange(of: city) { _, newValue in
             loadWeather(for: newValue)
@@ -86,6 +92,6 @@ struct ListWeatherCell: View {
     }
 }
 
-#Preview {
-    WeatherScreen(city: "Porto")
-}
+//#Preview {
+//    WeatherScreen(city: "Porto")
+//}
