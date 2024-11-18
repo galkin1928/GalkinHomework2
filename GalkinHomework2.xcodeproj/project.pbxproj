@@ -8,9 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		330370F42CD94DE700A47000 /* WeatherScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330370F32CD94DE700A47000 /* WeatherScreen.swift */; };
+		3308DBB62CE6837800A722B8 /* WeatherCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3308DBB52CE6837800A722B8 /* WeatherCache.swift */; };
 		335BE2722CDBD6F300CDCD51 /* ServiceLocator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335BE2712CDBD6F300CDCD51 /* ServiceLocator.swift */; };
 		335BE2762CDBD9D100CDCD51 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335BE2752CDBD9D100CDCD51 /* NetworkService.swift */; };
 		335BE2792CDBDA1F00CDCD51 /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335BE2782CDBDA1F00CDCD51 /* StorageService.swift */; };
+		338269172CEABFDB00A201B6 /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338269162CEABFDB00A201B6 /* WeatherService.swift */; };
 		3390E2DB2CC6C26B0063CE5B /* GalkinHomework2App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3390E2DA2CC6C26B0063CE5B /* GalkinHomework2App.swift */; };
 		3390E2DD2CC6C26B0063CE5B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3390E2DC2CC6C26B0063CE5B /* ContentView.swift */; };
 		3390E2DF2CC6C2760063CE5B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3390E2DE2CC6C2760063CE5B /* Assets.xcassets */; };
@@ -23,9 +25,11 @@
 /* Begin PBXFileReference section */
 		330370ED2CD92EE300A47000 /* generateWeatherAPI.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = generateWeatherAPI.sh; sourceTree = "<group>"; };
 		330370F32CD94DE700A47000 /* WeatherScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherScreen.swift; sourceTree = "<group>"; };
+		3308DBB52CE6837800A722B8 /* WeatherCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherCache.swift; sourceTree = "<group>"; };
 		335BE2712CDBD6F300CDCD51 /* ServiceLocator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceLocator.swift; sourceTree = "<group>"; };
 		335BE2752CDBD9D100CDCD51 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		335BE2782CDBDA1F00CDCD51 /* StorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
+		338269162CEABFDB00A201B6 /* WeatherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherService.swift; sourceTree = "<group>"; };
 		3390E2D72CC6C26B0063CE5B /* GalkinHomework2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GalkinHomework2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3390E2DA2CC6C26B0063CE5B /* GalkinHomework2App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalkinHomework2App.swift; sourceTree = "<group>"; };
 		3390E2DC2CC6C26B0063CE5B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -63,6 +67,14 @@
 			path = WeatherScreen;
 			sourceTree = "<group>";
 		};
+		3308DBB42CE682B700A722B8 /* StorageModels */ = {
+			isa = PBXGroup;
+			children = (
+				3308DBB52CE6837800A722B8 /* WeatherCache.swift */,
+			);
+			path = StorageModels;
+			sourceTree = "<group>";
+		};
 		335BE26F2CDBD6D900CDCD51 /* Core */ = {
 			isa = PBXGroup;
 			children = (
@@ -83,6 +95,7 @@
 		335BE2732CDBD99A00CDCD51 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				338269152CEABFCD00A201B6 /* WeatherService */,
 				335BE2772CDBDA0F00CDCD51 /* StorageService */,
 				335BE2742CDBD9B500CDCD51 /* NetworkService */,
 			);
@@ -101,6 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				335BE2782CDBDA1F00CDCD51 /* StorageService.swift */,
+				3308DBB42CE682B700A722B8 /* StorageModels */,
 			);
 			path = StorageService;
 			sourceTree = "<group>";
@@ -111,6 +125,14 @@
 				330370F22CD94DCF00A47000 /* WeatherScreen */,
 			);
 			path = Screens;
+			sourceTree = "<group>";
+		};
+		338269152CEABFCD00A201B6 /* WeatherService */ = {
+			isa = PBXGroup;
+			children = (
+				338269162CEABFDB00A201B6 /* WeatherService.swift */,
+			);
+			path = WeatherService;
 			sourceTree = "<group>";
 		};
 		3390E2CE2CC6C26B0063CE5B = {
@@ -230,6 +252,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3308DBB62CE6837800A722B8 /* WeatherCache.swift in Sources */,
+				338269172CEABFDB00A201B6 /* WeatherService.swift in Sources */,
 				335BE2762CDBD9D100CDCD51 /* NetworkService.swift in Sources */,
 				335BE2792CDBDA1F00CDCD51 /* StorageService.swift in Sources */,
 				335BE2722CDBD6F300CDCD51 /* ServiceLocator.swift in Sources */,

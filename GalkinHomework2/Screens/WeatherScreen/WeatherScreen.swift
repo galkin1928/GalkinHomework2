@@ -11,8 +11,7 @@ import WeatherNetwork
 
 struct WeatherScreen: View {
 
-    var network: NetworkService
-    var storage: StorageService
+    var weatherService: WeatherService
     var city: String
 
     @State var weather: CurrentWeatherData = .init()
@@ -42,8 +41,6 @@ struct WeatherScreen: View {
         }
         .onAppear {
             loadWeather(for: city)
-            network.doSomething()
-            storage.doSomething()
         }
         .onChange(of: city) { _, newValue in
             loadWeather(for: newValue)
@@ -53,7 +50,12 @@ struct WeatherScreen: View {
     }
 
     private func loadWeather(for city: String) {
-        WeatherCities.getWeather(city: city) { weather = $0 }
+        weatherService.getWeather(for: city) { weather in
+            guard let weather else {
+                return
+            }
+            self.weather = weather
+        }
     }
 
 }

@@ -23,5 +23,9 @@ struct GalkinHomework2App: App {
     private func registerServices() {
         ServiceLocator.shared.register(NetworkService())
         ServiceLocator.shared.register(StorageService())
+        if let network: NetworkService = try? ServiceLocator.shared.resolve(),
+           let storage: StorageService = try? ServiceLocator.shared.resolve() {
+            ServiceLocator.shared.register(WeatherService(network: network, storage: storage))
+        }
     }
 }
